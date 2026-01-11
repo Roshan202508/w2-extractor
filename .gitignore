@@ -89,5 +89,6 @@ Desktop.ini
 
 # Test files
 *.pdf
+!tests/*.pdf
 !tests/fixtures/*.pdf
 
