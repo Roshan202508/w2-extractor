@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-change-me-in-prod}
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+      - THIRD_PARTY_API_BASE_URL=http://app:8000/mock-api
+      - THIRD_PARTY_API_KEY=FinPro-Secret-Key
+    restart: unless-stopped
+
+  # run tests
+  test:
+    build: .
+    command: pytest -v
+    environment:
+      - DEBUG=True
+      - DJANGO_SECRET_KEY=test-key
+    profiles:
+      - testing
