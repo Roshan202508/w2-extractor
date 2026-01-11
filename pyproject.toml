@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "w2-extractor"
+version = "1.0.0"
+description = "Async Django service for processing W-2 PDF forms"
+authors = ["Developer"]
+readme = "README.md"
+packages = [{include = "api"}, {include = "mock_api"}, {include = "w2_extractor"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "^4.2,<5.0"
+djangorestframework = "^3.14"
+django-cors-headers = "^4.3"
+httpx = "^0.25"
+pymupdf = "^1.23"
+uvicorn = "^0.24"
+gunicorn = "^21.0"
+python-dotenv = "^1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4"
+pytest-django = "^4.7"
+pytest-asyncio = "^0.21"
+pytest-cov = "^4.1"
+black = "^23.0"
+isort = "^5.12"
+flake8 = "^6.1"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "w2_extractor.settings"
+python_files = "test_*.py"
+asyncio_mode = "auto"
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
