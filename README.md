@@ -41,7 +41,7 @@ w2-extractor/
 └── docker-compose.yml   # Local development
 ```
 
-For detailed file-by-file documentation, see [DOCUMENTATION.md](DOCUMENTATION.md).
+
 
 ---
 
